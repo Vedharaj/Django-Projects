@@ -1,44 +1,21 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home</title>
-        <link rel="stylesheet", href="{% static 'style.css' %}">
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        {% load static %}
+        <link rel="stylesheet", href="{% static 'css/style.css' %}">
 </head>
 <body>
     <div class="container">
         <header class="header">
             <h2>URL Shortner</h2>
         </header>
-        <form class="form" id="post-form">
-            {% csrf_token %}
-            <input type="text" name="link" class="urlinput" id="link" placeholder="Enter your url">
-            <button type="submit" name="submit" class="urlsubmit">Shorten</button>
-            <a class='shorten_link' href="" target="_blank">nothing found</a>  
-        </form>
+        <div class="form">
+            <input type="text" class="urlinput" placeholder="Enter your url">
+            <input type="submit" class="urlsubmit">
+        </div>
     </div>
-
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#post-form").submit(function(e){
-                e.preventDefault()
-                $.ajax({
-                    type: 'POST',
-                    url: '/create',
-                    data:{
-                        link: $("#link").val(),
-                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-                    },
-                    success: function(data){
-                        $('.shorten_link').text("http://localhost:8000/"+data)
-                        $('.shorten_link').attr('href', "http://localhost:8000/"+data)
-                    }
-                })
-        })
-    })
-    </script>
 </body>
 </html>
