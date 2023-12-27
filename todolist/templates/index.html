@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    {% include "head.html" %}
+    <body>
+    {% include "navbar.html" %}
+    <div class= "task-container mt-3 sm container-fluid">
+        {% for i in data reversed %}
+        <div class='row align-items-center justify-content-around'>
+                <div class="col form-check ms-3">
+                    <a href="completed/{{i.id}}">
+                        <label class="form-check-label text-capitalize font-monospace text-dark
+                            {% if i.completed %} text-decoration-line-through text-muted{% endif %}">
+                            {{i.taskname}}
+                        </label>
+                    </a>
+                </div>
+                <div class="col-1">
+                    <button type="button"class="btn btn-outline-danger btn-sm removetask">
+                        <a href='delete/{{i.id}}' class="text-danger" style="text-decoration: none;">
+                            remove
+                        </a>
+                    </button>
+                </div>
+            </div>
+            <hr />
+            {% endfor %}
+  </body>
+</html>
