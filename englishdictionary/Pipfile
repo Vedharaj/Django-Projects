@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+fontawesomefree = "*"
+django-bootstrap-v5 = "*"
+pydictionary = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"
